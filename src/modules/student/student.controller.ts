@@ -21,6 +21,8 @@ export class StudentsController {
     return this.studentsService.create(studentData);
   }
 
+
+  
   @Put(':id')
   async update(@Param('id') id: string, @Body() studentData: Partial<Students>): Promise<Students> {
     return this.studentsService.update(+id, studentData);
