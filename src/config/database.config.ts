@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from "@nestjs/typeorm";
 import { Students } from "src/modules/student/entity/student.entity";
+import { Subjects } from "src/modules/subject/entity/subject.entity";
 
 @Injectable()
 export class TypeormService implements TypeOrmOptionsFactory {
@@ -16,8 +17,10 @@ return {
             options: {
                 trustServerCertificate: true,
               },
-            entities :[Students],
+            entities :[Students, Subjects],
+            // "synchronize": true
 
         };
     }
+    // Students,Subjects
 }

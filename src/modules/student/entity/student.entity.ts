@@ -1,29 +1,66 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
-
+import { Subjects } from 'src/modules/subject/entity/subject.entity';
+import { Entity, Column, PrimaryColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Students {
-    @PrimaryColumn()
-    StudentID: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column()
-    FirstName: string;
+  @Column()
+  FirstName: string;
 
-    @Column()
-    LastName: string;
+  @Column()
+  LastName: string;
 
-    @Column()
-    class: string;
+  @Column()
+  Class: string;
 
-    @Column()
-    City: string;
+  @Column()
+  City: string;
 
-    @Column()
-    DOB: Date;
+  @Column()
+  DOB: Date;
 
-    @Column()
-    Grade: string;
+  @Column()
+  Grade: string;
 
-    
-    
+
+
+  @OneToMany(() => Subjects, subject => subject.student)
+    subject: Subjects[];
+  
 }
+
+// import { Subjects } from "src/modules/subject/entity/subject.entity";
+// import { Column, Entity, JoinTable, ManyToMany, PrimaryColumn } from "typeorm";
+
+
+// @Entity()
+// export class Students {
+//     @PrimaryColumn()
+//     StudentID: number;
+
+//     @Column()
+//     FirstName: string;
+
+//     @Column()
+//     LastName: string;
+
+//     @Column()
+//     Class: string;
+
+//     @Column()
+//     City: string;
+
+//     @Column()
+//     DOB: Date;
+
+//     @Column()
+//     Grade: string;
+
+//     @ManyToMany(() => Subjects)
+//     @JoinTable()
+//     subjects: Subjects[];
+  
+    
+// }
