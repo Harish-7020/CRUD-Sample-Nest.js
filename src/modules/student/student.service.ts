@@ -70,9 +70,10 @@ export class StudentsService {
   findOne(id: number): Promise<Students> {
     return this.studentsRepository.findOne({
       where: { id },
-      relations: ['subjects'],
+      relations: ['subject'],
     });
   }
+
   create(student: Students): Promise<Students> {
     return this.studentsRepository.save(student);
   }
@@ -87,3 +88,9 @@ export class StudentsService {
   }
   }
 
+/**
+   findByStudentId(@Param('studentId') studentId: number) {
+    return this.subjectsService.findByStudentId(studentId);
+  }
+
+ */

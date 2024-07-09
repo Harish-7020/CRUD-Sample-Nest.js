@@ -7,27 +7,27 @@ export class StudentsController {
   constructor(private readonly studentsService: StudentsService) {}
 
   @Get()
-  findAll() {
+  async findAll() {
     return this.studentsService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number) {
+  async findOne(@Param('id') id: number) {
     return this.studentsService.findOne(id);
   }
 
   @Post()
-  create(@Body() student: Students) {
+  async create(@Body() student: Students) {
     return this.studentsService.create(student);
   }
 
   @Put(':id')
-  update(@Param('id') id: number, @Body() student: Students) {
+  async update(@Param('id') id: number, @Body() student: Students) {
     return this.studentsService.update(id, student);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: number) {
+  async remove(@Param('id') id: number) {
     return this.studentsService.remove(id);
   }
 }

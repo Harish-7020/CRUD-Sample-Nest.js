@@ -7,16 +7,16 @@ export class Subjects {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column('int')
     Maths: number;
 
-    @Column()
+    @Column('int')
     Chemistry: number;
 
-    @Column()
+    @Column('int')
     Physics: number;
 
-    @Column()
+    @Column('int')
     ComputerScience: number; 
 
 

@@ -33,6 +33,9 @@
 
 // }
 // import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
 import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
 import { SubjectsService } from './subject.service';
 import { Subjects } from './entity/subject.entity';
@@ -55,11 +58,16 @@ export class SubjectsController {
   findByStudentId(@Param('studentId') studentId: number) {
     return this.subjectsService.findByStudentId(studentId);
   }
-
+  
+  // @Get('student')
+  // findByStudentIdAll() {
+  //   return this.subjectsService.findByStudentIdAll();
+  // }
   @Post()
-  create(@Body() body: { maths: number; chemistry: number; physics: number; computerScience: number; studentId: number }) {
-    return this.subjectsService.create(body);
+  create(@Body() subject: Subjects) {
+    return this.subjectsService.create(subject);
   }
+  
 
   @Put(':id')
   update(@Param('id') id: number, @Body() subject: Partial<Subjects>) {

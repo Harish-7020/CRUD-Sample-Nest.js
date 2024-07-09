@@ -26,7 +26,7 @@ export class Students {
 
 
 
-  @OneToMany(() => Subjects, subject => subject.student)
+  @OneToMany(() => Subjects, (subject) => subject.student)
     subject: Subjects[];
   
 }
