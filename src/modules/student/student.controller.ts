@@ -1,6 +1,8 @@
 import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
 import { StudentsService } from './student.service';
 import { Students } from './entity/student.entity';
+import { CreateStudentDto } from './dto/create-student.dto';
+import { UpdateStudentDto } from './dto/update-student.dto';
 
 @Controller('students')
 export class StudentsController {
@@ -17,13 +19,13 @@ export class StudentsController {
   }
 
   @Post()
-  async create(@Body() student: Students) {
-    return this.studentsService.create(student);
+  async create(@Body() createStudentDto : CreateStudentDto) {
+    return this.studentsService.create(createStudentDto);
   }
 
   @Put(':id')
-  async update(@Param('id') id: number, @Body() student: Students) {
-    return this.studentsService.update(id, student);
+  async update(@Param('id') id: number, @Body() updateStudentDto: UpdateStudentDto) {
+    return this.studentsService.update(id, updateStudentDto);
   }
 
   @Delete(':id')

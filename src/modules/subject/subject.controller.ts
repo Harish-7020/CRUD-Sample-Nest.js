@@ -39,6 +39,8 @@
 import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
 import { SubjectsService } from './subject.service';
 import { Subjects } from './entity/subject.entity';
+import { CreateSubjectDto } from './dto/create-subject.dto';
+import { UpdateSubjectDto } from './dto/update-subject.dto';
 
 @Controller('subjects')
 export class SubjectsController {
@@ -59,19 +61,14 @@ export class SubjectsController {
     return this.subjectsService.findByStudentId(studentId);
   }
   
-  // @Get('student')
-  // findByStudentIdAll() {
-  //   return this.subjectsService.findByStudentIdAll();
-  // }
   @Post()
-  create(@Body() subject: Subjects) {
-    return this.subjectsService.create(subject);
+  create(@Body() createSubjectDto : CreateSubjectDto) {
+    return this.subjectsService.create(createSubjectDto);
   }
   
-
   @Put(':id')
-  update(@Param('id') id: number, @Body() subject: Partial<Subjects>) {
-    return this.subjectsService.update(id, subject);
+  update(@Param('id') id: number, @Body() updateSubjectDto :UpdateSubjectDto) {
+    return this.subjectsService.update(id, updateSubjectDto);
   }
 
   @Delete(':id')

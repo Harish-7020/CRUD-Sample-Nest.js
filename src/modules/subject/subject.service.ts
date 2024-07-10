@@ -3,6 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Subjects } from './entity/subject.entity';
 import { Students } from '../student/entity/student.entity';
+import { CreateSubjectDto } from './dto/create-subject.dto';
+import { UpdateSubjectDto } from './dto/update-subject.dto';
 
 @Injectable()
 export class SubjectsService {
@@ -36,17 +38,17 @@ export class SubjectsService {
     });
   }
 
-  async create(subject: Subjects): Promise<Subjects> {
-    const student = await this.studentsRepository.findOne({ where: { id: subject.student.id } });
+  async create(createSubjectDto : CreateSubjectDto): Promise<Subjects> {
+    const student = await this.studentsRepository.findOne({ where: { id: createSubjectDto.StudentID } });
     if (!student) {
       throw new Error('Student not found');
     }
-    subject.student = student;
-    return this.subjectsRepository.save(subject);
+    // subject.student = student;
+    return this.subjectsRepository.save(createSubjectDto);
   }
 
-  async update(id: number, subject: Partial<Subjects>): Promise<void> {
-    await this.subjectsRepository.update(id, subject);
+  async update(id: number, updateSubjectDto :UpdateSubjectDto): Promise<void> {
+    await this.subjectsRepository.update(id, updateSubjectDto);
   }
 
   async remove(id: number): Promise<void> {
