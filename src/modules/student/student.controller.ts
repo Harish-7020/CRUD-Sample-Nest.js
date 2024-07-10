@@ -28,6 +28,7 @@ export class StudentsController {
     return this.studentsService.update(id, updateStudentDto);
   }
 
+  
   @Delete(':id')
   async remove(@Param('id') id: number) {
     return this.studentsService.remove(id);
