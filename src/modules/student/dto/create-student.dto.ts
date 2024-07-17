@@ -1,5 +1,5 @@
 import { Type } from "class-transformer";
-import { IsDate, isDate, IsNotEmpty, IsString } from "class-validator";
+import { IsDate, IsNotEmpty, IsString } from "class-validator";
 
 export class CreateStudentDto {
 

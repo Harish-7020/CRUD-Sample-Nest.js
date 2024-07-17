@@ -19,10 +19,11 @@ export class Subjects {
     @Column('int')
     ComputerScience: number; 
 
-
-    @ManyToOne(() => Students, student => student.subject)
+    @ManyToOne(() => Students, (student) => student.subject)
     @JoinColumn({name: 'StudentID'})
     student: Students;
-       
+    
+
+
 }
 

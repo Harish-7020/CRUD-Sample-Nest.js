@@ -1,5 +1,5 @@
 import { Subjects } from 'src/modules/subject/entity/subject.entity';
-import { Entity, Column, PrimaryColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column,OneToMany, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 
 @Entity()
 export class Students {
@@ -23,8 +23,6 @@ export class Students {
 
   @Column()
   Grade: string;
-
-
 
   @OneToMany(() => Subjects, (subject) => subject.student)
     subject: Subjects[];
